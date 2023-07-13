@@ -1,0 +1,12 @@
+{
+  "actions": [
+    {
+      "action": "create",
+      "outputs": ["output"]
+    },
+    {
+      "action": "gen",
+      "outputs": ["article", "image"]
+    }
+  ]
+}
