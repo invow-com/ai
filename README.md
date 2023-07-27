@@ -30,6 +30,7 @@ To set up Invow, you will need the following environment variables:
 - `MIDJOURNEY_BASE`: Your Midjourney base URL.
 - `MIDJOURNEY_KEY`: Your Midjourney API key.
 - `MIDJOURNEY_PROMPT`: Your Midjourney prompt.
+- `FLIKI_API_KEY`: Your Fliki API key.
 
 ## Usage
 
