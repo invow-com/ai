@@ -6,7 +6,7 @@
     },
     {
       "action": "gen",
-      "outputs": ["article", "image"]
+      "outputs": ["article", "image", "video"]
     }
   ]
 }
