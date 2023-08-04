@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import createPhrase from '../controllers/phrase.controller.js';
+import generateContent from '../controllers/generateContent.controller.js';
 
 const router = Router();
 
-router.post('/', (req, res) => {
-  createPhrase(req.body)
+router.post('/generateContent', (req, res) => {
+  generateContent(req.body)
     .then(phrase => res.status(201).json(phrase))
     .catch(err => {
       console.log(err);
