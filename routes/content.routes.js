@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import generateContent from '../controllers/generateContent.controller.js';
-
+import {createZip} from '../controllers/getImages.controller.js';
 const router = Router();
 
 router.post('/generateContent', (req, res) => {

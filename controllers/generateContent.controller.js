@@ -1,28 +1,21 @@
 import Content from "../models/content.js";
 import getPhrases from "./getPhrases.controller.js";
+import getImages from "./getImages.controller.js";
 
-const generateContent = async ({ phrases }) => {
+const generateContent = async ({ phrases, images }) => {
   try {
     const { numberOfCuotes, industry, specificity } = phrases;
+    const { imageType, imageText, imageAspect, imageQuality } = images;
     const generatedPhrases = phrases && await getPhrases(numberOfCuotes, industry, specificity);
-    const formattedData = generatedPhrases.split("\n\n").filter(Boolean);
-
-    // Paso 2: Crear un array de objetos con autor y frase
-    const quotesArray = formattedData
-      .map((quote) => {
-        // Paso 3: Extraer frase y autor usando expresiones regulares
-        const match = quote.match(/"(.+)" - (.+)/);
-        if (match) {
-          const frase = match[1];
-          const autor = match[2];
-          return { autor, frase };
-        }
-        return null; // Por si hay citas que no sigan el formato esperado.
-      })
-      .filter(Boolean); // Filtrar elementos nulos.
-
-    console.log(quotesArray);
-    return quotesArray;
+    let listOfImages = [];
+    generatedPhrases.map(async (phrase) => {
+      const generatedImages = images && await getImages(imageType, phrase, imageText, imageAspect, imageQuality);
+      console.log('generatedImages', generatedImages)
+      listOfImages.push(generatedImages);
+    });
+    console.log(listOfImages, 'listOfImages');
+    console.log(generatedPhrases, 'generatedPhrases');
+    // return generatedPhrases;
   } catch (error) {
     console.log(error);
     return error;
